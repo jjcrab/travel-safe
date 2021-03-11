@@ -2,13 +2,14 @@
 
 ## Description
 
-This website provides users up-to-date risk level and travel advisories for each country per travelers perspective, so travelers can consider if they are still comfortable going to the distinate countries base on the risk level. If they still want to go, they can also use the travel advisories to prepare their trips.
+This website provides users up-to-date risk level and travel advisories for each country per travelers perspective, so travelers can consider if they are still comfortable going to the destination countries base on the risk level. If they still want to go, they can also use the travel advisories to prepare their trips.
 
 ## Technologies Used
 
 - React
 - Components, props, and state
 - React Router
+- CSS grid and flexbox
 
 ## API link
 
@@ -38,6 +39,7 @@ Do you have any advise?
 - Home page with continents images
 - Continent page with a list countries which are in that region
 - Country page with all risk and travel advisories information
+  ![Image](./public/images/componentimage.png)
 
 ## Wire Frames
 
@@ -60,7 +62,7 @@ Do you have any advise?
 - As an app user, I want to see a list of continents and each continent is clickable so that I can go to each continent page.
 - As an app user, I want each country to be clickable so that I can go to each country's page with advisories information including risk level and travel advisories.
 - As a developer, I want to provide a navigation bar including link to homepage, continent page, and country page, and About page.
-- As an app user, I want to see a footer with date on it.
+- As an app user, I want to see a footer with date and risk color on it.
 - As an app user, I want to see flags of each country in the continent page.
 
 ### Stretch Goals
