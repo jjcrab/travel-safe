@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import './Continents.css';
+// import Countries from '../Countries/Countries';
 
 const url = process.env.PUBLIC_URL + `/images/`;
 
@@ -8,25 +9,25 @@ const Continents = () => {
 	return (
 		<div>
 			<ul>
-				<Link to='/continents/africa'>
+				<Link to='/continents/AF'>
 					<p>Africa</p>
 				</Link>
-				<Link to='/continents/antartica'>
+				<Link to='/continents/AN'>
 					<p>Antartica</p>
 				</Link>
-				<Link to='/continents/asia'>
+				<Link to='/continents/AS'>
 					<p>Asia</p>
 				</Link>
-				<Link to='/continents/australia'>
-					<p>Australia</p>
+				<Link to='/continents/OC'>
+					<p>Oceania</p>
 				</Link>
-				<Link to='/continents/europe'>
+				<Link to='/continents/EU'>
 					<p>Europe</p>
 				</Link>
-				<Link to='/continents/northamerica'>
+				<Link to='/continents/NA'>
 					<p>North America</p>
 				</Link>
-				<Link to='/continents/southamerica'>
+				<Link to='/continents/SA'>
 					<p>South America</p>
 				</Link>
 			</ul>
