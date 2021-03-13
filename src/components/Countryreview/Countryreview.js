@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import SwitchCountryBar from '../SwitchCountryBar/SwitchCountryBar';
 
 const countryAdviceURL = 'https://www.travel-advisory.info/api?countrycode=';
 
 const Countryreview = ({ match }) => {
 	const [countryDetail, setCountryDetail] = useState(null);
+	const initialState = { countryname: '' };
+	const [formState, setFormState] = useState(initialState);
 
 	useEffect(() => {
 		const url = `${countryAdviceURL}${match.params.countryiso}`;
@@ -25,13 +28,8 @@ const Countryreview = ({ match }) => {
 	}
 	return (
 		<div>
-			<form>
-				<label>Switch Country </label>
-				<input placeholder='country name'></input>
-				<button>submit</button>
-			</form>
+			<SwitchCountryBar />
 			<h2>{countryDetail.name}</h2>
-
 			<p>{countryDetail.advisory.score}</p>
 			<p>{countryDetail.advisory.message}</p>
 			<footer>Updated on {countryDetail.advisory.updated}</footer>

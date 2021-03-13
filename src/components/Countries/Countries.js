@@ -9,6 +9,8 @@ const Countries = ({ match, countries, setCountries }) => {
 	const [formState, setFormState] = useState(initialState);
 	const [error, setError] = useState(false);
 	const [countryNotIncluded, setCountryNotIncluded] = useState();
+	const [resList, setResList] = useState();
+	const [filterRes, setFilterRes] = useState();
 
 	useEffect(() => {
 		fetch(tripAdviceURL)
@@ -19,6 +21,7 @@ const Countries = ({ match, countries, setCountries }) => {
 					countryList.push(res.data[key]);
 				}
 				setCountries(countryList);
+				setResList(countryList);
 				console.log(countries);
 				return countryList;
 			})
@@ -30,6 +33,7 @@ const Countries = ({ match, countries, setCountries }) => {
 						return element.continent === match.params.continent;
 					});
 					setCountries(filteredList);
+					setFilterRes(filteredList);
 					console.log(countries);
 				}
 			})
@@ -58,7 +62,15 @@ const Countries = ({ match, countries, setCountries }) => {
 			setCountries(fullList);
 			setCountryNotIncluded(formState.countryname);
 		}
+
 		setFormState(initialState);
+		if (match && countries.length === 1) {
+			setCountries(filterRes);
+		}
+
+		if (!match && countries.length === 1) {
+			setCountries(resList);
+		}
 	}
 
 	return (
