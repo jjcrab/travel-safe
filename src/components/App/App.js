@@ -6,7 +6,7 @@ import Continents from '../Continents/Continents';
 import Countries from '../Countries/Countries';
 import { Route } from 'react-router-dom';
 import './App.css';
-import Countryreview from '../../Countryreview/Countryreview';
+import Countryreview from '../Countryreview/Countryreview';
 
 function App() {
 	const [continent, setContinent] = useState();

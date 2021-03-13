@@ -10,7 +10,7 @@ const Home = () => {
 				Travel Safe.
 			</h1>
 			<p>
-				Here you can find the up-to-date officially travel advisories which are
+				Here you can find the up-to-date official travel advisories which are
 				issued by governments across the globe.
 			</p>
 			<p>
