@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const countryAdviceURL = 'https://www.travel-advisory.info/api?countrycode=';
 
-const Countryreview = ({ match, country, setCountry }) => {
+const Countryreview = ({ match }) => {
 	const [countryDetail, setCountryDetail] = useState(null);
 
 	useEffect(() => {
@@ -14,22 +14,24 @@ const Countryreview = ({ match, country, setCountry }) => {
 				console.log(res);
 				let countryObj = res.data[match.params.countryiso];
 				console.log(countryObj);
-				// setCountry(countryObj);
 				setCountryDetail(countryObj);
-				console.log(country);
 			})
 			.catch((err) => {
 				console.error(err);
 			});
-	}, [match.params.countryiso]);
+	}, []);
 	if (!countryDetail) {
 		return <div>loading...</div>;
 	}
 	return (
 		<div>
-			<label>Switch Country </label>
-			<input placeholder='country name'></input>
-			<button>submit</button>
+			<form>
+				<label>Switch Country </label>
+				<input placeholder='country name'></input>
+				<button>submit</button>
+			</form>
+			<h2>{countryDetail.name}</h2>
+
 			<p>{countryDetail.advisory.score}</p>
 			<p>{countryDetail.advisory.message}</p>
 			<footer>Updated on {countryDetail.advisory.updated}</footer>

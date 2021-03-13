@@ -11,7 +11,7 @@ import Countryreview from '../Countryreview/Countryreview';
 function App() {
 	const [continent, setContinent] = useState();
 	const [countries, setCountries] = useState([]);
-	const [country, setCountry] = useState();
+
 	return (
 		<div className='App'>
 			<header className='App-header'>
@@ -39,13 +39,7 @@ function App() {
 				/>
 				<Route
 					path='/country/:countryiso'
-					render={(routerProps) => (
-						<Countryreview
-							match={routerProps.match}
-							country={country}
-							setCountry={setCountry}
-						/>
-					)}
+					render={(routerProps) => <Countryreview match={routerProps.match} />}
 				/>
 			</main>
 		</div>
