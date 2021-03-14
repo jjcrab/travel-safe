@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Countries.css';
-import SearchBar from '../SearchBar/SearchBar';
+// import SearchBar from '../SearchBar/SearchBar';
 
-const tripAdviceURL = 'https://www.travel-advisory.info/api';
+const flagURL = 'https://restcountries.eu/rest/v2/all';
 
 const Countries = () => {
 	const [fullList, setFullList] = useState([]);
 	const [formState, setFormState] = useState('');
 	const [error, setError] = useState(false);
 	const [countryNotIncluded, setCountryNotIncluded] = useState();
+	// const [test, setTest] = useState();
 
 	useEffect(() => {
-		fetch(tripAdviceURL)
+		fetch(flagURL)
 			.then((res) => res.json())
 			.then((res) => {
-				let countryList = [];
-				for (let key in res.data) {
-					countryList.push(res.data[key]);
-				}
-				setFullList(countryList);
+				console.log(res);
+				setFullList(res);
 			})
 			.catch((err) => {
 				console.error(err);
@@ -40,10 +38,10 @@ const Countries = () => {
 		let original = fullList;
 
 		setFullList(countrySearch);
+		// setTest(countrySearch);
 
 		if (!countrySearch.length) {
 			setError(true);
-
 			console.log(original);
 			setCountryNotIncluded(formState);
 		}
@@ -61,7 +59,7 @@ const Countries = () => {
 					onChange={handleChange}
 					value={formState}
 				/>
-				{/* <Link to={`/country/${fullList.iso_alpha2}`}> */}
+				{/* <Link to={`/country/${test.alpha2Code}`}> */}
 				<button type='submit'>submit</button>
 				{/* </Link> */}
 			</form>
@@ -70,13 +68,16 @@ const Countries = () => {
 				<p>{countryNotIncluded} is not a country. Please check spelling.</p>
 			)}
 
-			{fullList.map((element) => (
-				<div>
-					<Link to={`/country/${element.iso_alpha2}`}>
-						<p>{element.name}</p>
-					</Link>
-				</div>
-			))}
+			<div className='flagandcountry'>
+				{fullList.map((element) => (
+					<div className='countryLink'>
+						<Link to={`/country/${element.alpha2Code}`}>
+							<img src={element.flag} alt='test' className='flag' />
+							<p>{element.name}</p>
+						</Link>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };

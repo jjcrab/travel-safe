@@ -3,7 +3,7 @@ import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
 import About from '../About/About';
 import Continents from '../Continents/Continents';
-import Countries from '../CountriesOld/CountriesOld';
+import Countries from '../Countries/CountriesOld';
 import { Route } from 'react-router-dom';
 import Countryreview from '../Countryreview/Countryreview';
 // import CountrySearched from '../CountrySearched/CountrySearched';

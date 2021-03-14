@@ -5,6 +5,7 @@ const countryAdviceURL = 'https://www.travel-advisory.info/api?countrycode=';
 
 const Countryreview = ({ match }) => {
 	const [countryDetail, setCountryDetail] = useState(null);
+	const [flagList, setFlagList] = useState([]);
 
 	useEffect(() => {
 		const url = `${countryAdviceURL}${match.params.countryiso}`;
@@ -21,9 +22,39 @@ const Countryreview = ({ match }) => {
 				console.error(err);
 			});
 	}, []);
+
+	useEffect(() => {
+		fetch('https://restcountries.eu/rest/v2/all')
+			.then((res) => res.json())
+			.then((res) => {
+				console.log(res);
+				let countryFlag = res.filter((element) => {
+					return element.alpha2Code === match.params.countryiso;
+				});
+				setFlagList(countryFlag);
+				console.log(countryFlag);
+				console.log(flagList);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	}, []);
+
 	if (!countryDetail) {
-		return <div>loading...</div>;
+		return (
+			<div>
+				<p>No Information (yet).</p>
+			</div>
+		);
 	}
+	if (!flagList) {
+		return (
+			<div>
+				<p>No Image (yet).</p>
+			</div>
+		);
+	}
+
 	return (
 		<div>
 			<SwitchCountryBar />
@@ -31,6 +62,8 @@ const Countryreview = ({ match }) => {
 			<p>{countryDetail.advisory.score}</p>
 			<p>{countryDetail.advisory.message}</p>
 			<footer>Updated on {countryDetail.advisory.updated}</footer>
+			<img src={flagList.flag} alt='flag' />
+			<p>{flagList.capital}</p>
 		</div>
 	);
 };

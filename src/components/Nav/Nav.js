@@ -6,16 +6,16 @@ const Nav = () => {
 	return (
 		<div className='nav'>
 			<h3>Travel Safe</h3>
-			<Link to='/'>
+			<Link to='/' className='navlink'>
 				<p>Home</p>
 			</Link>
-			<Link to='/continents'>
+			<Link to='/continents' className='navlink'>
 				<p>Continents</p>
 			</Link>
-			<Link to='/countries'>
+			<Link to='/countries' className='navlink'>
 				<p>Countries</p>
 			</Link>
-			<Link to='/about'>
+			<Link to='/about' className='navlink'>
 				<p>About</p>
 			</Link>
 		</div>

@@ -2,12 +2,13 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import './Continents.css';
 // import Countries from '../Countries/Countries';
+import './Continents.css';
 
 const url = process.env.PUBLIC_URL + `/images/`;
 
 const Continents = () => {
 	return (
-		<div>
+		<div className='continents'>
 			<ul>
 				<Link to='/continents/AF'>
 					<p>Africa</p>
