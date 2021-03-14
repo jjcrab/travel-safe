@@ -3,8 +3,10 @@ import SwitchCountryBar from '../SwitchCountryBar/SwitchCountryBar';
 
 const countryAdviceURL = 'https://www.travel-advisory.info/api?countrycode=';
 
-const Countryreview = ({ match }) => {
+const CountryreviewOld = ({ match, countries, setCountries }) => {
 	const [countryDetail, setCountryDetail] = useState(null);
+	const initialState = { countryname: '' };
+	const [formState, setFormState] = useState(initialState);
 
 	useEffect(() => {
 		const url = `${countryAdviceURL}${match.params.countryiso}`;
@@ -31,8 +33,9 @@ const Countryreview = ({ match }) => {
 			<p>{countryDetail.advisory.score}</p>
 			<p>{countryDetail.advisory.message}</p>
 			<footer>Updated on {countryDetail.advisory.updated}</footer>
+			<p>{countries.name}</p>
 		</div>
 	);
 };
 
-export default Countryreview;
+export default CountryreviewOld;

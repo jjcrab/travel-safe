@@ -1,13 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SwitchCountryBar = () => {
 	return (
 		<div>
-			<form>
-				<label>Switch Country </label>
-				<input placeholder='country name'></input>
-				<button>submit</button>
-			</form>
+			<Link to='/switchingcountry'>
+				<button>Switch Country</button>
+			</Link>
 		</div>
 	);
 };

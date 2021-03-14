@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import SearchBar from '../SearchBar/SearchBar';
+import './Countries.css';
 
-const tripURL = 'https://www.travel-advisory.info/api';
+const tripAdviceURL = 'https://www.travel-advisory.info/api';
 
-const Countriescard = ({ match }) => {
-	const [countries, setCountries] = useState([]);
-	const [formState, setFormState] = useState('');
+const CountriesOld = ({ match, countries, setCountries }) => {
+	const initialState = { countryname: '' };
+	const [formState, setFormState] = useState(initialState);
 	const [error, setError] = useState(false);
 	const [countryNotIncluded, setCountryNotIncluded] = useState();
+	const [resList, setResList] = useState();
+	const [filterRes, setFilterRes] = useState();
 
 	useEffect(() => {
-		fetch(tripURL)
+		fetch(tripAdviceURL)
 			.then((res) => res.json())
 			.then((res) => {
 				let countryList = [];
@@ -19,15 +21,19 @@ const Countriescard = ({ match }) => {
 					countryList.push(res.data[key]);
 				}
 				setCountries(countryList);
+				setResList(countryList);
 				console.log(countries);
 				return countryList;
 			})
 			.then((countryList) => {
+				// console.log(countries);
+				setError(false);
 				if (match) {
 					let filteredList = countryList.filter((element) => {
 						return element.continent === match.params.continent;
 					});
 					setCountries(filteredList);
+					setFilterRes(filteredList);
 					console.log(countries);
 				}
 			})
@@ -37,7 +43,7 @@ const Countriescard = ({ match }) => {
 	}, []);
 
 	function handleChange(event) {
-		setFormState(event.target.value);
+		setFormState({ countryname: event.target.value });
 		console.log(event.target.value);
 	}
 
@@ -45,7 +51,7 @@ const Countriescard = ({ match }) => {
 		event.preventDefault();
 		setError(false);
 		let countrySearch = countries.filter((element) => {
-			return element.name === formState;
+			return element.name === formState.countryname;
 		});
 		let fullList = countries;
 
@@ -54,17 +60,37 @@ const Countriescard = ({ match }) => {
 		if (!countrySearch.length) {
 			setError(true);
 			setCountries(fullList);
-			setCountryNotIncluded(formState);
+			setCountryNotIncluded(formState.countryname);
 		}
+
+		// setFormState(initialState);
+		// if (match && countries.length === 1) {
+		// 	setCountries(filterRes);
+		// }
+
+		// if (!match && countries.length === 1) {
+		// 	setCountries(resList);
+		// }
+		console.log(countrySearch);
+		return countrySearch;
 	}
 
 	return (
 		<div>
-			<SearchBar
-				formState={formState}
-				handleChange={handleChange}
-				handleSubmit={handleSubmit}
-			/>
+			<form onSubmit={handleSubmit}>
+				<label htmlFor='searchcountry'>Search Country </label>
+				<input
+					placeholder='country name'
+					type='text'
+					id='countryname'
+					required
+					onChange={handleChange}
+					value={formState.countryname}
+				/>
+				{/* <Link to={`/country/${countrySearch.iso_alpha2}`}> */}
+				<button type='submit'>submit</button>
+				{/* </Link> */}
+			</form>
 
 			{match && match.params.continent === 'AF' && <h3>Africa</h3>}
 			{match && match.params.continent === 'AN' && <h3>Antartica</h3>}
@@ -87,4 +113,4 @@ const Countriescard = ({ match }) => {
 	);
 };
 
-export default Countriescard;
+export default CountriesOld;
