@@ -8,6 +8,20 @@ const Countrypreview = ({ match }) => {
 	const [countryDetail, setCountryDetail] = useState(null);
 	const [flagList, setFlagList] = useState([]);
 
+	// useEffect(() => {
+	// 	// if (!flagList) {
+	// 	let test = () => {
+	// 		return (
+	// 			<div>
+	// 				<img src={flagList[0].flag} alt='flag' />
+	// 				<p>{flagList[0].capital}</p>
+	// 			</div>
+	// 		);
+	// 	};
+	// 	// }
+	// 	console.log(flagList);
+	// }, [flagList]);
+
 	useEffect(() => {
 		const url = `${countryAdviceURL}${match.params.countryiso}`;
 		console.log(match.params.countryiso);
@@ -33,8 +47,6 @@ const Countrypreview = ({ match }) => {
 					return element.alpha2Code === match.params.countryiso;
 				});
 				setFlagList(countryFlag);
-				console.log(countryFlag);
-				console.log(flagList);
 			})
 			.catch((err) => {
 				console.error(err);
@@ -46,13 +58,6 @@ const Countrypreview = ({ match }) => {
 			<div>
 				<SwitchCountryBar />
 				<p>No Information (yet).</p>
-			</div>
-		);
-	}
-	if (!flagList) {
-		return (
-			<div>
-				<p>No Image (yet).</p>
 			</div>
 		);
 	}
@@ -69,7 +74,17 @@ const Countrypreview = ({ match }) => {
 				<SwitchCountryBar />
 			</div>
 
-			<h2>{countryDetail.name}</h2>
+			<div className='flagandname'>
+				<div id='smallflag'>
+					{flagList.length !== 0 ? (
+						<img src={flagList[0].flag} alt='flag' />
+					) : (
+						''
+					)}
+				</div>
+				<h2 id='name'>{countryDetail.name}</h2>
+			</div>
+
 			<main className='countryPreviewMain'>
 				<h4>Advisories:</h4>
 				<p>Risk Score: {countryDetail.advisory.score}</p>
@@ -88,9 +103,6 @@ const Countrypreview = ({ match }) => {
 				<p>Updated on {countryDetail.advisory.updated}</p>
 				<p>Source from {countryDetail.advisory.source}</p>
 			</footer>
-
-			{/* <img src={flagList[0].flag} alt='flag' />
-			<p>{flagList[0].capital}</p> */}
 		</div>
 	);
 };

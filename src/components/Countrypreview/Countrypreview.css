@@ -11,6 +11,8 @@
 	margin: auto;
 	text-align: left;
 	font-size: medium;
+	padding-top: 5%;
+	padding-bottom: 5%;
 }
 
 .advisory footer {
@@ -25,4 +27,18 @@
 	.advisory footer {
 		height: 20%;
 	}
+}
+
+.flagandname {
+	display: flex;
+}
+
+#smallflag {
+	width: 15%;
+	margin-right: 8%;
+	margin-left: 2%;
+}
+
+#smallflag img {
+	width: 100%;
 }

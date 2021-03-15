@@ -11,12 +11,13 @@ const Countries = () => {
 	const [formState, setFormState] = useState('');
 	const [error, setError] = useState(false);
 	const [countryNotIncluded, setCountryNotIncluded] = useState();
+	const [originalList, setOriginalList] = useState([]);
 
 	useEffect(() => {
 		fetch(flagURL)
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res);
+				setOriginalList(res);
 				setFullList(res);
 			})
 			.catch((err) => {
@@ -35,21 +36,22 @@ const Countries = () => {
 		event.preventDefault();
 
 		setError(false);
-		let countrySearch = fullList.filter((element) => {
+		let countrySearch = originalList.filter((element) => {
 			return element.name === formState;
 		});
-		let original = fullList;
 
 		setFullList(countrySearch);
 		console.log(countrySearch);
 
 		if (!countrySearch.length) {
 			setError(true);
-			console.log(original);
+
 			setCountryNotIncluded(formState);
 		}
 	}
-
+	if (!originalList.length) {
+		return null;
+	}
 	return (
 		<div>
 			<form onSubmit={handleSubmit} style={{ marginTop: '0.5rem' }}>
