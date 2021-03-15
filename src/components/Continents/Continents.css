@@ -1,22 +1,33 @@
+.continents {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	/* background-color: teal; */
+}
+
 ul {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	margin-top: 5%;
 	margin-bottom: 5%;
-}
-
-.continent {
-	height: 100%;
+	height: 20%;
 }
 
 .continentsimg {
-	width: 100%;
+	width: 80%;
 	margin-top: 10%;
 	margin: auto;
+	height: 80%;
+	/* background-color: tomato; */
 }
 
 ul p {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: inherit;
+}
+
+.continentsimg img {
+	width: 60%;
+	height: 100%;
 }
