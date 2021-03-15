@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Travel Safe Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This website provides users up-to-date risk level and travel advisories for each country per travelers perspective, so travelers can consider if they are still comfortable going to the destination countries base on the risk level. If they still want to go, they can also use the travel advisories to prepare their trips.
 
-In the project directory, you can run:
+## Technologies Used
 
-### `npm start`
+- React
+- Components, props, and state
+- React Router
+- CSS grid and flexbox
+- Style Componenets
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## API link
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### For Travel advisory:
 
-### `npm test`
+MVP
+https://www.travel-advisory.info/data-api
+If need more information
+https://developer.tugo.com/docs/read/travelsafe/v1/country
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### For country images
 
-### `npm run build`
+Flags:
+https://flagpedia.net/download/api
+https://restcountries.eu/#sources
+Maps:
+https://leafletjs.com/examples/quick-start/
+https://developers.google.com/maps/documentation/javascript/overview#maps_map_simple-javascript
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I actually just want to find simple contour of each continent and country. I feel these map APIs are complicated.
+Plan B is to find 7 continents' contour images and hard code them in React. For each country I want to find an API which can provide each country's sightseeing.
+Do you have any advise?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Visual of your component hierarchy
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- App (include a navigation component, About component, and footer component)
+- Home page with continents images
+- Continent page with a list countries which are in that region
+- Country page with all risk and travel advisories information
+  ![Image](./public/images/componentimage.png)
 
-### `npm run eject`
+## Wire Frames
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Laptop
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Image](./public/images/MacBookPro-1.png)
+![Image](./public/images/MacBookPro-2.png)
+![Image](./public/images/MacBookPro-3.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Cellphone
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Image](./public/images/X-1.png)
+![Image](./public/images/X-2.png)
+![Image](./public/images/X-3.png)
 
-## Learn More
+## User Stories
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### MVP Goals
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- As an app user, I want to see a list of continents and each continent is clickable so that I can go to each continent page.
+- As an app user, I want each country to be clickable so that I can go to each country's page with advisories information including risk level and travel advisories.
+- As a developer, I want to provide a navigation bar including link to homepage, continent page, and country page, and About page.
+- As an app user, I want to see a footer with date and risk color on it.
+- As an app user, I want to see flags of each country in the continent page.
+- As an app user, I want to type country name in a search bar so that I can go directly to that country's page.
 
-### Code Splitting
+### Stretch Goals
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- As an app user, I want to see global map with continents in the home page. And I want the continents images to be clickable so that I can go to a page with a list of countries in the related continents.
+- As an app user, I want to see more travel information like health, disease and entry exit requirement.
+- As an app user, I want to see a picture of a famous place of each country in the country page.
+- As an app user, I want to see regional/continental risk information.

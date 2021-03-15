@@ -1,18 +1,15 @@
 .flag {
-	width: 100%;
-	height: 70%;
-}
-
-.flagandcountry {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	margin: 3% auto;
-	background-color: rgb(115, 255, 0);
 	width: 90%;
+	height: 65%;
 }
 
 .countryLink {
-	background-color: tomato;
+	background-color: lightcyan;
 	margin: 8% 3%;
-	height: 70%;
+	/* height: 70%; */
+	padding-top: 2%;
+}
+
+.background {
+	background-color: white;
 }

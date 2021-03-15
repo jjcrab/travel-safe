@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Continents.css';
 // import Countries from '../Countries/Countries';
 import './Continents.css';

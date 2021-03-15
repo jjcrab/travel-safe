@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
+import SwitchContinent from '../SwitchContinent/SwitchContinent';
+import SwitchCountryBar from '../SwitchCountryBar/SwitchCountryBar';
+import Grid from '../Grid';
 
 const tripURL = 'https://www.travel-advisory.info/api';
 
@@ -56,33 +59,47 @@ const Countriescard = ({ match }) => {
 			setCountries(fullList);
 			setCountryNotIncluded(formState);
 		}
+		setFormState('');
 	}
 
 	return (
 		<div>
-			<SearchBar
-				formState={formState}
-				handleChange={handleChange}
-				handleSubmit={handleSubmit}
-			/>
+			<div style={{ margin: '2%' }}>
+				<Grid gap='1rem'>
+					<SearchBar
+						formState={formState}
+						handleChange={handleChange}
+						handleSubmit={handleSubmit}
+						country={countries}
+					/>
+					<SwitchContinent className='switchContinent' />
+				</Grid>
+			</div>
 
-			{match && match.params.continent === 'AF' && <h3>Africa</h3>}
-			{match && match.params.continent === 'AN' && <h3>Antartica</h3>}
-			{match && match.params.continent === 'AS' && <h3>Asia</h3>}
-			{match && match.params.continent === 'OC' && <h3>Oceania</h3>}
-			{match && match.params.continent === 'EU' && <h3>Europe</h3>}
-			{match && match.params.continent === 'NA' && <h3>North America</h3>}
-			{match && match.params.continent === 'SA' && <h3>South America</h3>}
+			{match && match.params.continent === 'AN' && <h2>Antartica</h2>}
+			{match && match.params.continent === 'AF' && <h2>Africa</h2>}
+			{match && match.params.continent === 'AS' && <h2>Asia</h2>}
+			{match && match.params.continent === 'OC' && <h2>Oceania</h2>}
+			{match && match.params.continent === 'EU' && <h2>Europe</h2>}
+			{match && match.params.continent === 'NA' && <h2>North America</h2>}
+			{match && match.params.continent === 'SA' && <h2>South America</h2>}
 
-			{error && <p>{countryNotIncluded} is not in this region.</p>}
+			{error && (
+				<p style={{ color: 'tomato' }}>
+					<span style={{ fontWeight: '600' }}>{countryNotIncluded}</span> is not
+					in this region.
+				</p>
+			)}
 
-			{countries.map((element) => (
-				<div>
-					<Link to={`/country/${element.iso_alpha2}`}>
-						<p>{element.name}</p>
-					</Link>
-				</div>
-			))}
+			<Grid gap='1rem' minWidth='100px'>
+				{countries.map((element) => (
+					<div>
+						<Link to={`/country/${element.iso_alpha2}`}>
+							<p>{element.name}</p>
+						</Link>
+					</div>
+				))}
+			</Grid>
 		</div>
 	);
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SwitchCountryBar from '../SwitchCountryBar/SwitchCountryBar';
 
-const CountryreviewTest = ({ match, countries, setCountries }) => {
+const CountrypreviewTest = ({ match, countries, setCountries }) => {
 	const [countryDetail, setCountryDetail] = useState([]);
 
 	useEffect(() => {
@@ -28,4 +28,4 @@ const CountryreviewTest = ({ match, countries, setCountries }) => {
 	);
 };
 
-export default CountryreviewTest;
+export default CountrypreviewTest;

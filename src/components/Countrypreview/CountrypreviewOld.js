@@ -3,9 +3,10 @@ import SwitchCountryBar from '../SwitchCountryBar/SwitchCountryBar';
 
 const countryAdviceURL = 'https://www.travel-advisory.info/api?countrycode=';
 
-const Countryreview = ({ match }) => {
+const CountrypreviewOld = ({ match, countries, setCountries }) => {
 	const [countryDetail, setCountryDetail] = useState(null);
-	const [flagList, setFlagList] = useState([]);
+	const initialState = { countryname: '' };
+	const [formState, setFormState] = useState(initialState);
 
 	useEffect(() => {
 		const url = `${countryAdviceURL}${match.params.countryiso}`;
@@ -22,39 +23,9 @@ const Countryreview = ({ match }) => {
 				console.error(err);
 			});
 	}, []);
-
-	useEffect(() => {
-		fetch('https://restcountries.eu/rest/v2/all')
-			.then((res) => res.json())
-			.then((res) => {
-				console.log(res);
-				let countryFlag = res.filter((element) => {
-					return element.alpha2Code === match.params.countryiso;
-				});
-				setFlagList(countryFlag);
-				console.log(countryFlag);
-				console.log(flagList);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
-	}, []);
-
 	if (!countryDetail) {
-		return (
-			<div>
-				<p>No Information (yet).</p>
-			</div>
-		);
+		return <div>loading...</div>;
 	}
-	if (!flagList) {
-		return (
-			<div>
-				<p>No Image (yet).</p>
-			</div>
-		);
-	}
-
 	return (
 		<div>
 			<SwitchCountryBar />
@@ -62,10 +33,9 @@ const Countryreview = ({ match }) => {
 			<p>{countryDetail.advisory.score}</p>
 			<p>{countryDetail.advisory.message}</p>
 			<footer>Updated on {countryDetail.advisory.updated}</footer>
-			<img src={flagList.flag} alt='flag' />
-			<p>{flagList.capital}</p>
+			<p>{countries.name}</p>
 		</div>
 	);
 };
 
-export default Countryreview;
+export default CountrypreviewOld;

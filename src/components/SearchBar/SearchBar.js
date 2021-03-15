@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Searchbar = ({ formState, handleSubmit, handleChange, fullList }) => {
+const Searchbar = ({ formState, handleSubmit, handleChange, country }) => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
@@ -14,7 +14,7 @@ const Searchbar = ({ formState, handleSubmit, handleChange, fullList }) => {
 					onChange={handleChange}
 					value={formState}
 				/>
-				{/* <Link to={`/country/${fullList.iso_alpha2}`}> */}
+				{/* <Link to={`/country/${country.iso_alpha2}`}> */}
 				{/* <Link to={`/countrysearched/${formState}`}> */}
 				<button type='submit'>submit</button>
 				{/* </Link> */}

@@ -5,7 +5,7 @@ import About from '../About/About';
 import Continents from '../Continents/Continents';
 import Countries from '../Countries/Countries';
 import { Route, Redirect } from 'react-router-dom';
-import Countryreview from '../Countryreview/Countryreview';
+import Countrypreview from '../Countrypreview/Countrypreview';
 import Countriescard from '../Countriescard/Countriescard';
 // import CountrySearched from '../CountrySearched/CountrySearched';
 import './App.css';
@@ -28,7 +28,7 @@ function App() {
 				/>
 				<Route
 					path='/country/:countryiso'
-					render={(routerProps) => <Countryreview match={routerProps.match} />}
+					render={(routerProps) => <Countrypreview match={routerProps.match} />}
 				/>
 
 				<Route
@@ -42,6 +42,11 @@ function App() {
 						<CountrySearched match={routerProps.match} />
 					)}
 				/> */}
+
+				<Route
+					path='/switchingcontinent'
+					render={() => <Redirect to='/continents' />}
+				/>
 			</main>
 		</div>
 	);

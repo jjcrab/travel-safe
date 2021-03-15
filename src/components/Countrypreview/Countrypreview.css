@@ -1,0 +1,28 @@
+.advisory {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.countryPreviewMain {
+	/* background-color: lightgreen; */
+	height: 60vh;
+	width: 60%;
+	margin: auto;
+	text-align: left;
+	font-size: medium;
+}
+
+.advisory footer {
+	height: 10%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	background-color: rgb(200, 236, 245);
+}
+
+@media only screen and (max-width: 666px) {
+	.advisory footer {
+		height: 20%;
+	}
+}
