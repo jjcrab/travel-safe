@@ -8,20 +8,6 @@ const Countrypreview = ({ match }) => {
 	const [countryDetail, setCountryDetail] = useState(null);
 	const [flagList, setFlagList] = useState([]);
 
-	// useEffect(() => {
-	// 	// if (!flagList) {
-	// 	let test = () => {
-	// 		return (
-	// 			<div>
-	// 				<img src={flagList[0].flag} alt='flag' />
-	// 				<p>{flagList[0].capital}</p>
-	// 			</div>
-	// 		);
-	// 	};
-	// 	// }
-	// 	console.log(flagList);
-	// }, [flagList]);
-
 	useEffect(() => {
 		const url = `${countryAdviceURL}${match.params.countryiso}`;
 		console.log(match.params.countryiso);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Countries.css';
 import Grid from '../Grid';
+
 // import SearchBar from '../SearchBar/SearchBar';
 
 const flagURL = 'https://restcountries.eu/rest/v2/all';
@@ -9,15 +10,15 @@ const flagURL = 'https://restcountries.eu/rest/v2/all';
 const Countries = () => {
 	const [fullList, setFullList] = useState([]);
 	const [formState, setFormState] = useState('');
-	const [error, setError] = useState(false);
-	const [countryNotIncluded, setCountryNotIncluded] = useState();
-	const [originalList, setOriginalList] = useState([]);
+	// const [error, setError] = useState(false);
+	// const [countryNotIncluded, setCountryNotIncluded] = useState();
+	// const [originalList, setOriginalList] = useState([]);
 
 	useEffect(() => {
 		fetch(flagURL)
 			.then((res) => res.json())
 			.then((res) => {
-				setOriginalList(res);
+				// setOriginalList(res);
 				setFullList(res);
 			})
 			.catch((err) => {
@@ -26,32 +27,30 @@ const Countries = () => {
 	}, []);
 
 	function handleChange(event) {
-		setError(false);
-		console.log(error);
+		// setError(false);
+		// console.log(error);
 		setFormState(event.target.value);
-		console.log(event.target.value);
+		// console.log(event.target.value);
 	}
 
 	function handleSubmit(event) {
 		event.preventDefault();
+		// setError(false);
+		// let countrySearch = originalList.filter((element) => {
+		// 	return element.name === formState;
+		// });
 
-		setError(false);
-		let countrySearch = originalList.filter((element) => {
-			return element.name === formState;
-		});
+		// setFullList(countrySearch);
+		// console.log(countrySearch);
 
-		setFullList(countrySearch);
-		console.log(countrySearch);
-
-		if (!countrySearch.length) {
-			setError(true);
-
-			setCountryNotIncluded(formState);
-		}
+		// if (!countrySearch.length) {
+		// 	setError(true);
+		// 	setCountryNotIncluded(formState);
+		// }
 	}
-	if (!originalList.length) {
-		return null;
-	}
+	// if (!originalList.length) {
+	// 	return null;
+	// }
 	return (
 		<div>
 			<form onSubmit={handleSubmit} style={{ marginTop: '0.5rem' }}>
@@ -64,16 +63,18 @@ const Countries = () => {
 					onChange={handleChange}
 					value={formState}
 				/>
-				{/* <Link to={`/country/${fullList.alpha2Code}`}> */}
-				<button type='submit'>submit</button>
-				{/* </Link> */}
+
+				<Link to={`/countrysearched/${formState}`}>
+					<button type='submit'>submit</button>
+				</Link>
 			</form>
 
-			{error && (
+			{/* {error && (
 				<p style={{ color: 'tomato' }}>
 					{countryNotIncluded} is not a country. Please check spelling.
 				</p>
-			)}
+			)} */}
+
 			<div className='background'>
 				<Grid>
 					{fullList.map((element) => (

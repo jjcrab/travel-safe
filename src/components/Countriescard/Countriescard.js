@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 import SwitchContinent from '../SwitchContinent/SwitchContinent';
-import SwitchCountryBar from '../SwitchCountryBar/SwitchCountryBar';
 import Grid from '../Grid';
 
 const tripURL = 'https://www.travel-advisory.info/api';
@@ -12,6 +11,8 @@ const Countriescard = ({ match }) => {
 	const [formState, setFormState] = useState('');
 	const [error, setError] = useState(false);
 	const [countryNotIncluded, setCountryNotIncluded] = useState();
+	const [originalList, setOriginalList] = useState([]);
+	const [filterContinent, setFilterContinent] = useState([]);
 
 	useEffect(() => {
 		fetch(tripURL)
@@ -21,6 +22,7 @@ const Countriescard = ({ match }) => {
 				for (let key in res.data) {
 					countryList.push(res.data[key]);
 				}
+				setOriginalList(countryList);
 				setCountries(countryList);
 				console.log(countries);
 				return countryList;
@@ -30,7 +32,7 @@ const Countriescard = ({ match }) => {
 					let filteredList = countryList.filter((element) => {
 						return element.continent === match.params.continent;
 					});
-					setCountries(filteredList);
+					setFilterContinent(filteredList);
 					console.log(countries);
 				}
 			})
@@ -40,6 +42,7 @@ const Countriescard = ({ match }) => {
 	}, []);
 
 	function handleChange(event) {
+		setError(false);
 		setFormState(event.target.value);
 		console.log(event.target.value);
 	}
@@ -47,19 +50,20 @@ const Countriescard = ({ match }) => {
 	function handleSubmit(event) {
 		event.preventDefault();
 		setError(false);
-		let countrySearch = countries.filter((element) => {
+		let countrySearch = filterContinent.filter((element) => {
 			return element.name === formState;
 		});
-		let fullList = countries;
 
 		setCountries(countrySearch);
 
 		if (!countrySearch.length) {
 			setError(true);
-			setCountries(fullList);
 			setCountryNotIncluded(formState);
 		}
 		setFormState('');
+	}
+	if (!originalList.length || !filterContinent) {
+		return null;
 	}
 
 	return (
@@ -86,8 +90,8 @@ const Countriescard = ({ match }) => {
 
 			{error && (
 				<p style={{ color: 'tomato' }}>
-					<span style={{ fontWeight: '600' }}>{countryNotIncluded}</span> is not
-					in this region.
+					<span style={{ fontWeight: '600' }}>{countryNotIncluded}</span> is
+					either a typo or not in this region.
 				</p>
 			)}
 
