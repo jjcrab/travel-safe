@@ -63,13 +63,13 @@ Do you have any advise?
 - As an app user, I want to see a list of continents and each continent is clickable so that I can go to each continent page.
 - As an app user, I want each country to be clickable so that I can go to each country's page with advisories information including risk level and travel advisories.
 - As a developer, I want to provide a navigation bar including link to homepage, continent page, and country page, and About page.
-- As an app user, I want to see a footer with date and risk color on it.
+- As an app user, I want to see a footer with date.
 - As an app user, I want to see flags of each country in the continent page.
-- As an app user, I want to type country name in a search bar so that I can go directly to that country's page.
 
 ### Stretch Goals
 
-- As an app user, I want to see global map with continents in the home page. And I want the continents images to be clickable so that I can go to a page with a list of countries in the related continents.
+- As an app user, I want to type country name in a search bar so that I can go directly to that country's page.
+- As an app user, I want to see global map with continents in the continent page. And I want the continents images to be clickable so that I can go to a page with a list of countries in the related continents.
 - As an app user, I want to see more travel information like health, disease and entry exit requirement.
 - As an app user, I want to see a picture of a famous place of each country in the country page.
 - As an app user, I want to see regional/continental risk information.
