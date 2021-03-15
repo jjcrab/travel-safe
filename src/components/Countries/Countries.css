@@ -1,0 +1,15 @@
+.flag {
+	width: 90%;
+	height: 65%;
+}
+
+.countryLink {
+	background-color: lightcyan;
+	margin: 8% 3%;
+	/* height: 70%; */
+	padding-top: 2%;
+}
+
+.background {
+	background-color: white;
+}

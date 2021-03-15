@@ -1,0 +1,18 @@
+.App {
+	text-align: center;
+	margin: 5vh auto;
+	width: 95%;
+	height: 90vh;
+	background: white;
+	display: flex;
+	flex-direction: column;
+}
+
+.App-header {
+	height: 10vh;
+	background-color: rgb(16, 125, 214);
+}
+
+.App main {
+	height: 90%;
+}
