@@ -151,4 +151,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## Contribution Guidelines
 
-You can fork and clone the repository from GitHub. Check out to a new branch and submite a pull request. I would love to see your advice for improvement.
+You can fork and clone the repository from GitHub https://github.com/jjcrab/travel-safe. Check out to a new branch and submite a pull request. I would love to see your advice for improvement.
