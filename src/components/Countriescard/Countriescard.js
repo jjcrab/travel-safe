@@ -13,7 +13,6 @@ const Countriescard = ({ match }) => {
 	const [countryNotIncluded, setCountryNotIncluded] = useState();
 	const [originalList, setOriginalList] = useState([]);
 	const [filterContinent, setFilterContinent] = useState([]);
-	const [error2, setError2] = useState(false);
 
 	useEffect(() => {
 		fetch(tripURL)

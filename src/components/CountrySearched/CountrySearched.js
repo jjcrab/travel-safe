@@ -34,10 +34,17 @@ const CountrySearched = ({ match }) => {
 			.then((res) => res.json())
 			.then((res) => {
 				console.log(res);
-				let countryFlag = res.filter((element) => {
-					return element.name === match.params.countryname;
-				});
-				setFlagList(countryFlag);
+				if (match.params.countryname === 'United States') {
+					let uslist = [];
+					let us = res[239];
+					uslist.push(us);
+					setFlagList(uslist);
+				} else {
+					let countryFlag = res.filter((element) => {
+						return element.name === match.params.countryname;
+					});
+					setFlagList(countryFlag);
+				}
 			})
 			.catch((err) => {
 				console.error(err);

@@ -7,7 +7,6 @@ import Countries from '../Countries/Countries';
 import { Route, Redirect } from 'react-router-dom';
 import Countrypreview from '../Countrypreview/Countrypreview';
 import Countriescard from '../Countriescard/Countriescard';
-import Error from '../Error/Error';
 import CountrySearched from '../CountrySearched/CountrySearched';
 import './App.css';
 

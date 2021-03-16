@@ -30,6 +30,7 @@ const Countries = () => {
 		// setError(false);
 		// console.log(error);
 		setFormState(event.target.value);
+
 		// console.log(event.target.value);
 	}
 
