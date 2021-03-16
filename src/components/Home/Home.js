@@ -9,7 +9,7 @@ const Home = () => {
 				<span>Welcome to </span>
 				Travel Safe.
 			</h1>
-			<div style={{ width: '80%', height: '30%' }}>
+			<div style={{ width: '80%', height: '30%', padding: '2rem' }}>
 				<p>
 					Here you can find the up-to-date official travel advisories which are
 					issued by governments across the globe.
@@ -20,12 +20,19 @@ const Home = () => {
 				</p>
 				<p id='safetravel'>Safe travel!</p>
 			</div>
-			<div style={{ height: '60%', width: '80%' }}>
-				<img
-					src={url + 'travelglobally.jpg'}
-					alt='travel-globally'
-					id='homepageimg'
-				/>
+			<div className='box'>
+				{/* <div>
+					{' '}
+					<img
+						src={url + 'travelglobally.jpg'}
+						alt='travel-globally'
+						id='homepageimg'
+					/>
+				</div> */}
+
+				<div className='container'>
+					<div className='earth'></div>
+				</div>
 			</div>
 		</div>
 	);

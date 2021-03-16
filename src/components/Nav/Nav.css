@@ -12,6 +12,10 @@
 	font-size: large;
 }
 
+.nav p:hover {
+	font-size: 110%;
+}
+
 .navlink {
 	text-decoration: none;
 }
