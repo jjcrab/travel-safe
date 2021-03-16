@@ -16,11 +16,11 @@ const CountrySearched = ({ match }) => {
 				for (let key in res.data) {
 					list.push(res.data[key]);
 				}
-				console.log(list);
+
 				let singleCountry = list.filter((element) => {
 					return element.name === match.params.countryname;
 				});
-				console.log(singleCountry);
+
 				setCountrySearch(singleCountry);
 			})
 

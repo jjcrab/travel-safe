@@ -14,9 +14,8 @@ const Countrypreview = ({ match }) => {
 		fetch(url)
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res);
 				let countryObj = res.data[match.params.countryiso];
-				console.log(countryObj);
+
 				setCountryDetail(countryObj);
 			})
 			.catch((err) => {
@@ -28,7 +27,6 @@ const Countrypreview = ({ match }) => {
 		fetch('https://restcountries.eu/rest/v2/all')
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res);
 				let countryFlag = res.filter((element) => {
 					return element.alpha2Code === match.params.countryiso;
 				});

@@ -24,7 +24,6 @@ const Countriescard = ({ match }) => {
 					countryList.push(res.data[key]);
 				}
 				setOriginalList(countryList);
-
 				return countryList;
 			})
 			.then((countryList) => {
@@ -33,7 +32,6 @@ const Countriescard = ({ match }) => {
 						return element.continent === match.params.continent;
 					});
 					setFilterContinent(filteredList);
-					console.log(countries);
 				}
 			})
 			.catch((err) => {
@@ -44,7 +42,6 @@ const Countriescard = ({ match }) => {
 	function handleChange(event) {
 		setError(false);
 		setFormState(event.target.value);
-		console.log(event.target.value);
 	}
 
 	function handleSubmit(event) {
@@ -119,7 +116,7 @@ const Countriescard = ({ match }) => {
 			{error && (
 				<p style={{ color: 'tomato' }}>
 					<span style={{ fontWeight: '600' }}>{countryNotIncluded}</span> is
-					either a typo or not in this region.
+					either not in this region or a typo.
 				</p>
 			)}
 

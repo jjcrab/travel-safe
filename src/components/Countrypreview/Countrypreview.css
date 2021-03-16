@@ -5,7 +5,6 @@
 }
 
 .countryPreviewMain {
-	/* background-color: lightgreen; */
 	height: 60vh;
 	width: 60%;
 	margin: auto;
@@ -49,7 +48,6 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	/* background-color: coral; */
 	height: 100%;
 }
 

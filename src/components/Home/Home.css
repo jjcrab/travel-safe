@@ -41,7 +41,6 @@ h1 {
 .earth {
 	width: 18rem;
 	height: 18rem;
-	/* background-image: url(https://storage.googleapis.com/gweb-uniblog-publish-prod/images/New-global-view.max-1100x1100.jpeg); */
 	background-image: url(https://www.custom-wallpaper-printing.co.uk/custom/catalog/map/world-map-physical_26666.jpg);
 
 	border-radius: 50%;
@@ -57,14 +56,12 @@ h1 {
 }
 
 .box {
-	/* background-color: cadetblue; */
 	height: 60%;
 	width: 80%;
 	display: flex;
 }
 
 .container {
-	/* background-color: blueviolet; */
 	display: flex;
 	justify-content: flex-end;
 	align-items: flex-start;

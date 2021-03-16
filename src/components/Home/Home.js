@@ -32,15 +32,6 @@ const Home = () => {
 				</div>
 			</div>
 			<div className='box'>
-				{/* <div>
-					{' '}
-					<img
-						src={url + 'travelglobally.jpg'}
-						alt='travel-globally'
-						id='homepageimg'
-					/>
-				</div> */}
-
 				<div className='container'>
 					<div className='earth'></div>
 				</div>
