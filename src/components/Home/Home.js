@@ -5,11 +5,11 @@ const Home = () => {
 	const url = process.env.PUBLIC_URL + `/images/`;
 	return (
 		<div className='home'>
-			<h1 style={{ height: '10%' }}>
+			<h1 style={{ height: '6%' }}>
 				<span>Welcome to </span>
 				Travel Safe.
 			</h1>
-			<div style={{ width: '80%', height: '20%' }}>
+			<div style={{ width: '80%', height: '30%' }}>
 				<p>
 					Here you can find the up-to-date official travel advisories which are
 					issued by governments across the globe.
@@ -20,7 +20,7 @@ const Home = () => {
 				</p>
 				<p id='safetravel'>Safe travel!</p>
 			</div>
-			<div style={{ height: '60%' }}>
+			<div style={{ height: '60%', width: '80%' }}>
 				<img
 					src={url + 'travelglobally.jpg'}
 					alt='travel-globally'

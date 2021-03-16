@@ -59,20 +59,22 @@ const CountrySearched = ({ match }) => {
 	}
 	return (
 		<div>
-			<SwitchCountryBar />
+			<div style={{ paddingLeft: '70vw', marginTop: '1rem' }}>
+				<SwitchCountryBar />
+			</div>
+
 			<Link to={`/country/${countrySearch[0].iso_alpha2}`}>
-				<p>{countrySearch[0].name}</p>
+				<h2 style={{ marginTop: '2rem' }}>{countrySearch[0].name}</h2>
 			</Link>
 			{flagList.length !== 0 ? (
-				<div>
+				<div style={{ marginTop: '4rem' }}>
 					<p>Region: {flagList[0].region}</p>
 					<p>Capital: {flagList[0].capital}</p>
 					<p>Population: {flagList[0].population}</p>
 					<p>Calling Code: {flagList[0].callingCodes[0]}</p>
 					<p>
-						Currencies:
-						{flagList[0].currencies[0].name}{' '}
-						<span>{flagList[0].currencies[0].symbol}</span>
+						Currencies: {flagList[0].currencies[0].name}{' '}
+						<span> {flagList[0].currencies[0].symbol}</span>
 					</p>
 					<p>Timezones: {flagList[0].timezones[0]}</p>
 				</div>

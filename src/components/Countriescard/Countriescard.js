@@ -13,6 +13,7 @@ const Countriescard = ({ match }) => {
 	const [countryNotIncluded, setCountryNotIncluded] = useState();
 	const [originalList, setOriginalList] = useState([]);
 	const [filterContinent, setFilterContinent] = useState([]);
+	const [error2, setError2] = useState(false);
 
 	useEffect(() => {
 		fetch(tripURL)
@@ -23,8 +24,7 @@ const Countriescard = ({ match }) => {
 					countryList.push(res.data[key]);
 				}
 				setOriginalList(countryList);
-				setCountries(countryList);
-				console.log(countries);
+
 				return countryList;
 			})
 			.then((countryList) => {
@@ -53,16 +53,15 @@ const Countriescard = ({ match }) => {
 		let countrySearch = filterContinent.filter((element) => {
 			return element.name === formState;
 		});
-
 		setCountries(countrySearch);
-
 		if (!countrySearch.length) {
 			setError(true);
 			setCountryNotIncluded(formState);
 		}
+
 		setFormState('');
 	}
-	if (!originalList.length || !filterContinent) {
+	if (!originalList.length) {
 		return null;
 	}
 
@@ -80,13 +79,41 @@ const Countriescard = ({ match }) => {
 				</Grid>
 			</div>
 
-			{match && match.params.continent === 'AN' && <h2>Antartica</h2>}
-			{match && match.params.continent === 'AF' && <h2>Africa</h2>}
-			{match && match.params.continent === 'AS' && <h2>Asia</h2>}
-			{match && match.params.continent === 'OC' && <h2>Oceania</h2>}
-			{match && match.params.continent === 'EU' && <h2>Europe</h2>}
-			{match && match.params.continent === 'NA' && <h2>North America</h2>}
-			{match && match.params.continent === 'SA' && <h2>South America</h2>}
+			{match && match.params.continent === 'AN' && (
+				<h2>
+					Countries in <span>Antartica</span>
+				</h2>
+			)}
+			{match && match.params.continent === 'AF' && (
+				<h2>
+					Countries in <span>Africa</span>
+				</h2>
+			)}
+			{match && match.params.continent === 'AS' && (
+				<h2>
+					Countries in <span>Asia</span>
+				</h2>
+			)}
+			{match && match.params.continent === 'OC' && (
+				<h2>
+					Countries in <span>Oceania</span>
+				</h2>
+			)}
+			{match && match.params.continent === 'EU' && (
+				<h2>
+					Countries in <span>Europe</span>
+				</h2>
+			)}
+			{match && match.params.continent === 'NA' && (
+				<h2>
+					Countries in <span>North America</span>
+				</h2>
+			)}
+			{match && match.params.continent === 'SA' && (
+				<h2>
+					Countries in <span>South America</span>
+				</h2>
+			)}
 
 			{error && (
 				<p style={{ color: 'tomato' }}>
@@ -94,16 +121,31 @@ const Countriescard = ({ match }) => {
 					either a typo or not in this region.
 				</p>
 			)}
+			{!countries.length && filterContinent ? (
+				<div>
+					<Grid gap='1rem' minWidth='100px'>
+						{filterContinent.map((element) => (
+							<div>
+								<Link to={`/country/${element.iso_alpha2}`}>
+									<p>{element.name}</p>
+								</Link>
+							</div>
+						))}
+					</Grid>
+				</div>
+			) : (
+				''
+			)}
 
-			<Grid gap='1rem' minWidth='100px'>
-				{countries.map((element) => (
-					<div>
-						<Link to={`/country/${element.iso_alpha2}`}>
-							<p>{element.name}</p>
-						</Link>
-					</div>
-				))}
-			</Grid>
+			{countries.length ? (
+				<div>
+					<Link to={`/country/${countries[0].iso_alpha2}`}>
+						<p>{countries[0].name}</p>
+					</Link>
+				</div>
+			) : (
+				''
+			)}
 		</div>
 	);
 };

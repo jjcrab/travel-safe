@@ -10,8 +10,9 @@ h1 span {
 	font-style: normal;
 }
 #homepageimg {
-	margin-top: 2%;
 	height: 100%;
+	width: 80%;
+	max-width: 900px;
 }
 
 h1 {
@@ -24,4 +25,11 @@ h1 {
 
 #safetravel {
 	font-weight: 600;
+}
+
+@media only screen and (max-width: 650px) {
+	#homepageimg {
+		height: 60%;
+		margin-top: 20%;
+	}
 }
