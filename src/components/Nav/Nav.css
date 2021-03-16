@@ -9,10 +9,15 @@
 
 .nav p {
 	color: white;
+	font-size: large;
 }
 
 .navlink {
 	text-decoration: none;
+}
+
+.navlink:hover {
+	background-color: rgb(41, 89, 223);
 }
 
 #companyname {
@@ -22,7 +27,7 @@
 }
 
 @media only screen and (max-width: 400px) {
-	.nav {
+	.nav p {
 		font-size: 0.8rem;
 	}
 }

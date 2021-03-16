@@ -16,3 +16,16 @@
 .App main {
 	height: 90%;
 }
+
+.switchbutton {
+	border-radius: 6px;
+	padding: 6px;
+	border-color: coral;
+	color: rgb(224, 80, 28);
+	font-weight: 600;
+}
+
+.switchbutton:hover,
+:focus {
+	color: red;
+}

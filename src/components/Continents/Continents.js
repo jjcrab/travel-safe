@@ -11,25 +11,25 @@ const Continents = () => {
 		<div className='continents'>
 			<div className='list'>
 				<ul>
-					<Link to='/continents/AF'>
+					<Link to='/continents/AF' className='continentlink'>
 						<p>Africa</p>
 					</Link>
-					<Link to='/continents/AN'>
+					<Link to='/continents/AN' className='continentlink'>
 						<p>Antartica</p>
 					</Link>
-					<Link to='/continents/AS'>
+					<Link to='/continents/AS' className='continentlink'>
 						<p>Asia</p>
 					</Link>
-					<Link to='/continents/OC'>
+					<Link to='/continents/OC' className='continentlink'>
 						<p>Oceania</p>
 					</Link>
-					<Link to='/continents/EU'>
+					<Link to='/continents/EU' className='continentlink'>
 						<p>Europe</p>
 					</Link>
-					<Link to='/continents/NA'>
+					<Link to='/continents/NA' className='continentlink'>
 						<p>North America</p>
 					</Link>
-					<Link to='/continents/SA'>
+					<Link to='/continents/SA' className='continentlink'>
 						<p>South America</p>
 					</Link>
 				</ul>

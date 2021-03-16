@@ -5,7 +5,7 @@ const SwitchContinent = () => {
 	return (
 		<div>
 			<Link to='/switchingcontinent'>
-				<button>Switch Continent</button>
+				<button className='switchbutton'>Switch Continent</button>
 			</Link>
 		</div>
 	);

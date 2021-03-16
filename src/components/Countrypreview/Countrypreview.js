@@ -41,9 +41,11 @@ const Countrypreview = ({ match }) => {
 
 	if (!countryDetail) {
 		return (
-			<div>
-				<SwitchCountryBar />
-				<p>No Information (yet).</p>
+			<div className='errorPage'>
+				<p>No Information at this time (yet).</p>
+				<div className='errorSwitch'>
+					<SwitchCountryBar />
+				</div>
 			</div>
 		);
 	}

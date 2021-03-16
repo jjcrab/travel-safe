@@ -37,8 +37,22 @@
 	width: 15%;
 	margin-right: 8%;
 	margin-left: 2%;
+	border: 0.5px solid rgb(206, 234, 245);
 }
 
 #smallflag img {
 	width: 100%;
+}
+
+.errorPage {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* background-color: coral; */
+	height: 100%;
+}
+
+.errorPage p {
+	font-size: large;
 }

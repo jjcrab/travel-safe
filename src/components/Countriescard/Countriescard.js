@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 import SwitchContinent from '../SwitchContinent/SwitchContinent';
 import Grid from '../Grid';
+import './Countriescard.css';
 
 const tripURL = 'https://www.travel-advisory.info/api';
 
@@ -77,42 +78,43 @@ const Countriescard = ({ match }) => {
 					<SwitchContinent className='switchContinent' />
 				</Grid>
 			</div>
-
-			{match && match.params.continent === 'AN' && (
-				<h2>
-					Countries in <span>Antartica</span>
-				</h2>
-			)}
-			{match && match.params.continent === 'AF' && (
-				<h2>
-					Countries in <span>Africa</span>
-				</h2>
-			)}
-			{match && match.params.continent === 'AS' && (
-				<h2>
-					Countries in <span>Asia</span>
-				</h2>
-			)}
-			{match && match.params.continent === 'OC' && (
-				<h2>
-					Countries in <span>Oceania</span>
-				</h2>
-			)}
-			{match && match.params.continent === 'EU' && (
-				<h2>
-					Countries in <span>Europe</span>
-				</h2>
-			)}
-			{match && match.params.continent === 'NA' && (
-				<h2>
-					Countries in <span>North America</span>
-				</h2>
-			)}
-			{match && match.params.continent === 'SA' && (
-				<h2>
-					Countries in <span>South America</span>
-				</h2>
-			)}
+			<div className='continentName'>
+				{match && match.params.continent === 'AN' && (
+					<h2>
+						Countries in <span>Antartica</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'AF' && (
+					<h2>
+						Countries in <span>Africa</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'AS' && (
+					<h2>
+						Countries in <span>Asia</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'OC' && (
+					<h2>
+						Countries in <span>Oceania</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'EU' && (
+					<h2>
+						Countries in <span>Europe</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'NA' && (
+					<h2>
+						Countries in <span>North America</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'SA' && (
+					<h2>
+						Countries in <span>South America</span>
+					</h2>
+				)}
+			</div>
 
 			{error && (
 				<p style={{ color: 'tomato' }}>
@@ -120,26 +122,32 @@ const Countriescard = ({ match }) => {
 					either a typo or not in this region.
 				</p>
 			)}
-			{!countries.length && filterContinent ? (
-				<div>
-					<Grid gap='1rem' minWidth='100px'>
-						{filterContinent.map((element) => (
-							<div>
-								<Link to={`/country/${element.iso_alpha2}`}>
-									<p>{element.name}</p>
-								</Link>
-							</div>
-						))}
-					</Grid>
+
+			<div style={{ backgroundColor: 'white' }}>
+				<div style={{ backgroundColor: 'white' }} className='countriesLink'>
+					{!countries.length && filterContinent ? (
+						<Grid gap='1rem' minWidth='100px'>
+							{filterContinent.map((element) => (
+								<div>
+									<Link
+										to={`/country/${element.iso_alpha2}`}
+										style={{ textDecoration: 'none' }}
+										className='test'>
+										<p>{element.name}</p>
+									</Link>
+								</div>
+							))}
+						</Grid>
+					) : (
+						''
+					)}
 				</div>
-			) : (
-				''
-			)}
+			</div>
 
 			{countries.length ? (
 				<div>
 					<Link to={`/country/${countries[0].iso_alpha2}`}>
-						<p>{countries[0].name}</p>
+						<p style={{ fontSize: '3rem' }}>{countries[0].name}</p>
 					</Link>
 				</div>
 			) : (
