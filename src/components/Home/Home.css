@@ -41,11 +41,13 @@ h1 {
 .earth {
 	width: 18rem;
 	height: 18rem;
-	background-image: url(https://storage.googleapis.com/gweb-uniblog-publish-prod/images/New-global-view.max-1100x1100.jpeg);
+	/* background-image: url(https://storage.googleapis.com/gweb-uniblog-publish-prod/images/New-global-view.max-1100x1100.jpeg); */
+	background-image: url(https://www.custom-wallpaper-printing.co.uk/custom/catalog/map/world-map-physical_26666.jpg);
+
 	border-radius: 50%;
 	background-size: cover;
-	box-shadow: -10px -10px 20px 2px black inset, -5px 0 20px 5px #000;
-	animation: spin 50s linear alternate infinite;
+	box-shadow: 30px -5px 20px -10px black inset, -10px 2px 20px 5px black;
+	animation: spin 30s linear infinite;
 }
 
 @keyframes spin {
