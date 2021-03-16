@@ -9,7 +9,9 @@ const Home = () => {
 				<span>Welcome to </span>
 				Travel Safe.
 			</h1>
-			<div style={{ width: '80%', height: '30%', padding: '2rem' }}>
+			<div
+				style={{ width: '80%', height: '30%', padding: '2rem' }}
+				className='homemessage'>
 				<p>
 					Here you can find the up-to-date official travel advisories which are
 					issued by governments across the globe.
@@ -18,7 +20,16 @@ const Home = () => {
 					Hope this site can help you get a more comprehensive impression for
 					your trip planning.
 				</p>
-				<p id='safetravel'>Safe travel!</p>
+				<div id='safetravel'>
+					<p>Safe travel!</p>
+					<p>Bon Voyage</p>
+					<p>一路平安</p>
+					<p>Gute Reise</p>
+					<p>良い旅を</p>
+					<p>buon viaggio</p>
+					<p>Buen viaje!</p>
+					<p>आपकी यात्रा शानदार हो</p>
+				</div>
 			</div>
 			<div className='box'>
 				{/* <div>
