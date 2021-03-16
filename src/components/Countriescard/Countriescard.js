@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 import SwitchContinent from '../SwitchContinent/SwitchContinent';
-import SwitchCountryBar from '../SwitchCountryBar/SwitchCountryBar';
 import Grid from '../Grid';
+import './Countriescard.css';
 
 const tripURL = 'https://www.travel-advisory.info/api';
 
@@ -12,6 +12,8 @@ const Countriescard = ({ match }) => {
 	const [formState, setFormState] = useState('');
 	const [error, setError] = useState(false);
 	const [countryNotIncluded, setCountryNotIncluded] = useState();
+	const [originalList, setOriginalList] = useState([]);
+	const [filterContinent, setFilterContinent] = useState([]);
 
 	useEffect(() => {
 		fetch(tripURL)
@@ -21,8 +23,7 @@ const Countriescard = ({ match }) => {
 				for (let key in res.data) {
 					countryList.push(res.data[key]);
 				}
-				setCountries(countryList);
-				console.log(countries);
+				setOriginalList(countryList);
 				return countryList;
 			})
 			.then((countryList) => {
@@ -30,8 +31,7 @@ const Countriescard = ({ match }) => {
 					let filteredList = countryList.filter((element) => {
 						return element.continent === match.params.continent;
 					});
-					setCountries(filteredList);
-					console.log(countries);
+					setFilterContinent(filteredList);
 				}
 			})
 			.catch((err) => {
@@ -40,26 +40,26 @@ const Countriescard = ({ match }) => {
 	}, []);
 
 	function handleChange(event) {
+		setError(false);
 		setFormState(event.target.value);
-		console.log(event.target.value);
 	}
 
 	function handleSubmit(event) {
 		event.preventDefault();
 		setError(false);
-		let countrySearch = countries.filter((element) => {
+		let countrySearch = filterContinent.filter((element) => {
 			return element.name === formState;
 		});
-		let fullList = countries;
-
 		setCountries(countrySearch);
-
 		if (!countrySearch.length) {
 			setError(true);
-			setCountries(fullList);
 			setCountryNotIncluded(formState);
 		}
+
 		setFormState('');
+	}
+	if (!originalList.length) {
+		return null;
 	}
 
 	return (
@@ -75,31 +75,81 @@ const Countriescard = ({ match }) => {
 					<SwitchContinent className='switchContinent' />
 				</Grid>
 			</div>
-
-			{match && match.params.continent === 'AN' && <h2>Antartica</h2>}
-			{match && match.params.continent === 'AF' && <h2>Africa</h2>}
-			{match && match.params.continent === 'AS' && <h2>Asia</h2>}
-			{match && match.params.continent === 'OC' && <h2>Oceania</h2>}
-			{match && match.params.continent === 'EU' && <h2>Europe</h2>}
-			{match && match.params.continent === 'NA' && <h2>North America</h2>}
-			{match && match.params.continent === 'SA' && <h2>South America</h2>}
+			<div className='continentName'>
+				{match && match.params.continent === 'AN' && (
+					<h2>
+						Countries in <span>Antartica</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'AF' && (
+					<h2>
+						Countries in <span>Africa</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'AS' && (
+					<h2>
+						Countries in <span>Asia</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'OC' && (
+					<h2>
+						Countries in <span>Oceania</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'EU' && (
+					<h2>
+						Countries in <span>Europe</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'NA' && (
+					<h2>
+						Countries in <span>North America</span>
+					</h2>
+				)}
+				{match && match.params.continent === 'SA' && (
+					<h2>
+						Countries in <span>South America</span>
+					</h2>
+				)}
+			</div>
 
 			{error && (
 				<p style={{ color: 'tomato' }}>
-					<span style={{ fontWeight: '600' }}>{countryNotIncluded}</span> is not
-					in this region.
+					<span style={{ fontWeight: '600' }}>{countryNotIncluded}</span> is
+					either not in this region or a typo.
 				</p>
 			)}
 
-			<Grid gap='1rem' minWidth='100px'>
-				{countries.map((element) => (
-					<div>
-						<Link to={`/country/${element.iso_alpha2}`}>
-							<p>{element.name}</p>
-						</Link>
-					</div>
-				))}
-			</Grid>
+			<div style={{ backgroundColor: 'white' }}>
+				<div style={{ backgroundColor: 'white' }} className='countriesLink'>
+					{!countries.length && filterContinent ? (
+						<Grid gap='1rem' minWidth='100px'>
+							{filterContinent.map((element) => (
+								<div>
+									<Link
+										to={`/country/${element.iso_alpha2}`}
+										style={{ textDecoration: 'none' }}
+										className='test'>
+										<p>{element.name}</p>
+									</Link>
+								</div>
+							))}
+						</Grid>
+					) : (
+						''
+					)}
+				</div>
+			</div>
+
+			{countries.length ? (
+				<div>
+					<Link to={`/country/${countries[0].iso_alpha2}`}>
+						<p style={{ fontSize: '3rem' }}>{countries[0].name}</p>
+					</Link>
+				</div>
+			) : (
+				''
+			)}
 		</div>
 	);
 };

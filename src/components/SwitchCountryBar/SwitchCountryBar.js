@@ -5,7 +5,7 @@ const SwitchCountryBar = () => {
 	return (
 		<div>
 			<Link to='/switchingcountry'>
-				<button>Switch Country</button>
+				<button className='switchbutton'>Switch Country</button>
 			</Link>
 		</div>
 	);

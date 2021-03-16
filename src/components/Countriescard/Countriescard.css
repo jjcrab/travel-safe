@@ -1,0 +1,23 @@
+.countriesLink p:hover {
+	background-color: rgb(243, 211, 199);
+}
+
+.countriesLink p {
+	color: rgb(30, 124, 61);
+	font-weight: 600;
+}
+
+.continentName h2 {
+	font-weight: 400;
+	color: rgb(3, 75, 45);
+	background-color: rgb(215, 245, 185);
+}
+
+.continentName span {
+	font-weight: 600;
+}
+
+.countriesLink {
+	width: 90%;
+	margin: auto;
+}

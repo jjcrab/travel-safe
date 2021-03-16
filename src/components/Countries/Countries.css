@@ -2,14 +2,18 @@
 	width: 90%;
 	height: 65%;
 }
+.flag:hover {
+	width: 110%;
+}
 
 .countryLink {
 	background-color: lightcyan;
-	margin: 8% 3%;
-	/* height: 70%; */
+	margin: 15% 3%;
 	padding-top: 2%;
 }
 
 .background {
 	background-color: white;
+	width: 90%;
+	margin: auto;
 }

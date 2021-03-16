@@ -14,9 +14,8 @@ const Countrypreview = ({ match }) => {
 		fetch(url)
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res);
 				let countryObj = res.data[match.params.countryiso];
-				console.log(countryObj);
+
 				setCountryDetail(countryObj);
 			})
 			.catch((err) => {
@@ -28,13 +27,10 @@ const Countrypreview = ({ match }) => {
 		fetch('https://restcountries.eu/rest/v2/all')
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res);
 				let countryFlag = res.filter((element) => {
 					return element.alpha2Code === match.params.countryiso;
 				});
 				setFlagList(countryFlag);
-				console.log(countryFlag);
-				console.log(flagList);
 			})
 			.catch((err) => {
 				console.error(err);
@@ -43,16 +39,11 @@ const Countrypreview = ({ match }) => {
 
 	if (!countryDetail) {
 		return (
-			<div>
-				<SwitchCountryBar />
-				<p>No Information (yet).</p>
-			</div>
-		);
-	}
-	if (!flagList) {
-		return (
-			<div>
-				<p>No Image (yet).</p>
+			<div className='errorPage'>
+				<p>No Information at this time (yet).</p>
+				<div className='errorSwitch'>
+					<SwitchCountryBar />
+				</div>
 			</div>
 		);
 	}
@@ -69,7 +60,17 @@ const Countrypreview = ({ match }) => {
 				<SwitchCountryBar />
 			</div>
 
-			<h2>{countryDetail.name}</h2>
+			<div className='flagandname'>
+				<div id='smallflag'>
+					{flagList.length !== 0 ? (
+						<img src={flagList[0].flag} alt='flag' />
+					) : (
+						''
+					)}
+				</div>
+				<h2 id='name'>{countryDetail.name}</h2>
+			</div>
+
 			<main className='countryPreviewMain'>
 				<h4>Advisories:</h4>
 				<p>Risk Score: {countryDetail.advisory.score}</p>
@@ -88,9 +89,6 @@ const Countrypreview = ({ match }) => {
 				<p>Updated on {countryDetail.advisory.updated}</p>
 				<p>Source from {countryDetail.advisory.source}</p>
 			</footer>
-
-			{/* <img src={flagList[0].flag} alt='flag' />
-			<p>{flagList[0].capital}</p> */}
 		</div>
 	);
 };

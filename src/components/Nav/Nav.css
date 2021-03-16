@@ -9,20 +9,31 @@
 
 .nav p {
 	color: white;
+	font-size: large;
+}
+
+.nav p:hover {
+	font-size: 110%;
 }
 
 .navlink {
 	text-decoration: none;
+	width: 5.3rem;
+}
+
+.navlink:hover {
+	background-color: rgb(41, 89, 223);
 }
 
 #companyname {
 	font-style: italic;
 	color: ivory;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	margin-top: 1rem;
 }
 
 @media only screen and (max-width: 400px) {
-	.nav {
+	.nav p {
 		font-size: 0.8rem;
 	}
 }

@@ -7,7 +7,7 @@ import Countries from '../Countries/Countries';
 import { Route, Redirect } from 'react-router-dom';
 import Countrypreview from '../Countrypreview/Countrypreview';
 import Countriescard from '../Countriescard/Countriescard';
-// import CountrySearched from '../CountrySearched/CountrySearched';
+import CountrySearched from '../CountrySearched/CountrySearched';
 import './App.css';
 
 function App() {
@@ -36,12 +36,12 @@ function App() {
 					render={() => <Redirect to='/countries' />}
 				/>
 
-				{/* <Route
+				<Route
 					path='/countrysearched/:countryname'
 					render={(routerProps) => (
 						<CountrySearched match={routerProps.match} />
 					)}
-				/> */}
+				/>
 
 				<Route
 					path='/switchingcontinent'
